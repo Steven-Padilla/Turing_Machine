@@ -6,7 +6,6 @@ left='left'
 static='static'
 finalState='q8'
 alphabeth=list(string.ascii_lowercase)
-same1tape=''
 inicialState='q1'
 outputTape=[]                     #Creating and filling outPutTape with blanks
 for i in range (200):
@@ -95,7 +94,6 @@ def turing_Union(inputTape):
 
     for i in range(len(inputTape)): #Iterating each letter from the input
         band=False
-        aux=inputTape[i]
         for singleT in transitions:
             if singleT[0] == state  and singleT[2]==outputTape[head2] and singleT[1]==inputTape[head1]:
                 outputTape[head2]=singleT[5]
