@@ -162,7 +162,7 @@ def transportStr(tape):
 
 
 
-def turing_Union(inputTape1,inputTape2):
+def turingMachine(inputTape1,inputTape2):
     inputTape1=transportStr(inputTape1)
     inputTape2=transportStr(inputTape2)
     state=inicialState
@@ -220,7 +220,7 @@ def main():
     generatePDF()
     # for x in transitions:
     #     print(str(x)+',')
-    accepted=turing_Union("{a}","{}") #Write here your input {}#{}
+    accepted=turingMachine("{a}","{}") #Write here your input {}#{}
     result=''
     for char in outputTape:
         if char!=blank:

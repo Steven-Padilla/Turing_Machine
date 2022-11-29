@@ -85,7 +85,7 @@ def transportStr(tape):
     for x in tape:
         aux.append(x)
     return aux
-def turing_Union(inputTape):
+def turingMachine(inputTape):
     inputTape=transportStr(inputTape)
     state=inicialState
     head1=0
@@ -120,7 +120,7 @@ def turing_Union(inputTape):
 
 
     
-accepted=turing_Union("{a}#{z,x,y,a}") #Write here your input {}#{}
+accepted=turingMachine("{a}#{z,x,y,a}") #Write here your input {}#{}
 result=''
 for char in outputTape:
     if char!=blank:
