@@ -8,11 +8,11 @@ finalState='q5'
 inicialState='q0'
 listAux=list(string.ascii_lowercase)
 result=[]
-outputTape=[]
+outputTape=[]       #Creating and filling outPutTape with blanks
 inputTape2=[]
-for i in range (5000):
+for i in range (200):
     inputTape2.append(blank)
-for i in range (5000):
+for i in range (200):
     outputTape.append(blank)
 transitions=[
     #( First block )  --->  (     Second block       )    
@@ -49,13 +49,7 @@ def fillT():
 
     for x in result:
         transitions.append(x)
-    #Creating transitions q2 -> q3 with all the alphabet
-    # result=[]
-    # for i in range(26):
-    #     for j in range(26):
-           
-    # for x in result:
-    #     transitions.append(x)
+
     #Creating transitions q3 -> q3 with all the alphabet
     result=[]
     for i in range(26):
@@ -67,13 +61,7 @@ def fillT():
                 result.append(['q3','&',listAux[j],listAux[k],        'q4','&',listAux[j],listAux[k],right,right,static])
     for x in result:
         transitions.append(x)
-    #Creating transitions q3 -> q4 with all the alphabet
-    # result=[]
-    # for k in range(26):
-    #     for j in range(26):
-            
-    # for x in result:
-    #     transitions.append(x)
+
     #Creating transitions q4 -> q6 with all the alphabet
     result=[]
     for k in range(26):
@@ -81,36 +69,18 @@ def fillT():
         result.append(['q4','}',blank,listAux[k],        'q5','}','}',listAux[k],right,right,right])
     for x in result:
         transitions.append(x)
-    #Creating transitions q4 -> q5 with all the alphabet
-    # result=[]
-    # for k in range(26):
-        
-    # for x in result:
-    #     transitions.append(x)
+
     #Creating transitions q6 -> q6 with all the alphabet
     result=[]
     for i in range(26):
         for j in range(26):
-            result.append(['q6','!',blank,blank,        'q6','!',listAux[j],blank,right,static,static])
-            result.append(['q6',',',blank,blank,        'q6',',',listAux[j],blank,right,static,static])
-            result.append(['q6',listAux[i],blank,blank,        'q2',listAux[i],listAux[i],listAux[i],right,static,static])
-            result.append(['q6','}',blank,blank,        'q5','}','}',listAux[k],right,right,right])
+            result.append(['q6','!',blank,blank,        'q6','!',blank,blank,right,static,static])
+            result.append(['q6',',',blank,blank,        'q6',',',blank,blank,right,static,static])
+            result.append(['q6',listAux[i],blank,blank,        'q2','&',listAux[i],listAux[i],right,static,static])
+            result.append(['q6','}',blank,blank,        'q5','}','}',blank,right,right,right])
     for x in result:
         transitions.append(x)
-    #Creating transitions q6 -> q2,q with all the alphabet
-    # result=[]
-    # for i in range(26):
-    #     for j in range(26):
-    #         for k in range(26):
-                
-    # for x in result:
-    #     transitions.append(x)
-    #Creating transitions q6 -> q5 with all the alphabet
-    # result=[]
-    # for k in range(26):
-        
-    # for x in result:
-    #     transitions.append(x)
+
 
 def transportStr(tape):
     aux =[]
@@ -153,6 +123,7 @@ def turing_intersection(inputTape1):
                     print(f'Cabeza 1: {inputTape1[head1]}')
                     print(f'Cabeza 2: {inputTape2[head2]}')
                     print(f'Cabeza 3: {outputTape[head3]}')
+                    # time.sleep(1)
 
 
             if(band==False):
@@ -175,17 +146,16 @@ def main():
     generatePDF()
     # for x in transitions:
     #     print(str(x)+',')
-    x="{a,c,f,g,v,a}"
-    y="{a,t,s,k,v}"
-    accepted=turing_intersection(x) #Write here your input {}#{}
+    x="{a,a,c,c,b,e,c,d}"
+    accepted=turing_intersection(x)
     result=''
-    for char in outputTape:
+    for char in inputTape2:
         if char!=blank:
             result+=char
         if char==blank:
             break
     if accepted:
-        print (f'Intersection of {x} with {y}: \n {result}')
+        print (f'String with no duplicated items of {x}: \n {result}')
     else:
         print(f'String NOT Accepted: {result}')
     
