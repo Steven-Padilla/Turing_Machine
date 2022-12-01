@@ -78,6 +78,7 @@ def fillT():
             result.append(['q6',',',blank,blank,        'q6',',',blank,blank,right,static,static])
             result.append(['q6',listAux[i],blank,blank,        'q2','&',listAux[i],listAux[i],right,static,static])
             result.append(['q6','}',blank,blank,        'q5','}','}',blank,right,right,right])
+            result.append(['q6','}',',',blank,        'q5','}','}',blank,right,right,right])
     for x in result:
         transitions.append(x)
 
