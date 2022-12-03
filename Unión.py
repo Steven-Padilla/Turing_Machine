@@ -42,7 +42,7 @@ transitions=[
     ['q2', 'z', 'blank', 'q3', 'blank', 'z', 'right', 'right'],
     ['q3',',',blank,  'q2',blank,',',right,right],
     ['q3','}',blank,  'q4',blank,',',right,right],
-    ['q2','}',blank,  'q4',blank,',',right,right],
+    ['q2','}',blank,  'q4',blank,blank,right,static],
     ['q4','#',blank,  'q5',blank,blank,right,static],
     ['q5','{',blank,  'q6',blank,blank,right,static],
     ['q6', 'a', 'blank', 'q7', 'blank', 'a', 'right', 'right'],
@@ -74,6 +74,8 @@ transitions=[
     ['q7',',',blank,  'q6',blank,',',right,right],
     ['q6','}',blank,  'q9',blank,blank,right,left],
     ['q9',blank,',',  'q8',blank,'}',static,right],
+    ['q9',blank,'{',  'q10',blank,'{',static,right],
+    ['q10',blank,blank,  'q8',blank,'}',static,right],
     ['q7','}',blank,  'q8',blank,'}',right,right],
     
     
@@ -120,7 +122,7 @@ def turingMachine(inputTape):
 
 
     
-accepted=turingMachine("{a}#{z,x,y,a}") #Write here your input {}#{}
+accepted=turingMachine("{}#{}") #Write here your input {}#{}
 result=''
 for char in outputTape:
     if char!=blank:
@@ -130,4 +132,4 @@ for char in outputTape:
 if accepted:
     print (f'Turing Machine is done: \n {result}')
 else:
-    print(f'String not Accepted')
+    print(f'String not Accepted: {result}')
