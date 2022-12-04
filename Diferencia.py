@@ -24,7 +24,6 @@ class Diferencia():
         ['q9',  '}'  ,  '{'  ,self.blank,        'q7',  '}'  , '{' ,'}',self.static,self.static,self.static],
         ['q9',  '}'  ,  ','  ,self.blank,        'q7',  '}'  , ',' ,'}',self.static,self.static,self.static],
         ['q10',  '}'  , '}'   ,self.blank,        'q7',  '}'  , '}' ,'}',self.right,self.static,self.right],
-
     ] 
 
 
@@ -32,8 +31,7 @@ class Diferencia():
     def fillT(self):
         listAux=list(string.ascii_lowercase) + ["0","1","2","3","4","5","6","7","8","9"]
         result=[]
-
-
+        
     #Creating transitions q10 -> q10 with all alphabet + ","
         result=[]
         listComma=listAux.copy()
@@ -41,7 +39,6 @@ class Diferencia():
         for i in range(len(listComma)):
             result.append(['q10',listComma[i],"}",self.blank,        'q10',listComma[i],'}',listComma[i],self.right,self.static,self.right])
             self.transitions.append(result[i])
-
 
     #Creating transition q8 -> q9 with alphabet and ",","{"
         result=[]

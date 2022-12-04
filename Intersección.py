@@ -120,7 +120,6 @@ class Interseccion():
         return aux
 
 
-
     def turing_intersection(self,inputTape1,inputTape2):
         inputTape1=self.transportStr(inputTape1)
         inputTape2=self.transportStr(inputTape2)
@@ -160,9 +159,6 @@ class Interseccion():
             return True
         return False
                 
-
-
-
     def ejecutar(self, conjunto1, conjunto2):
         self.fillT()
         accepted=self.turing_intersection(conjunto1,conjunto2) #Write here your input {}#{}
@@ -176,5 +172,3 @@ class Interseccion():
             return result
         else:
             return False
-            
-            
