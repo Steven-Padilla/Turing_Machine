@@ -30,12 +30,12 @@ transitions=[
 
 
 def fillT():
-    listAux=list(string.ascii_lowercase)
+    listAux=list(string.ascii_lowercase) + ["0","1","2","3","4","5","6","7","8","9"]
 
 # Creating transicion q1 -> q2 when tape one symbols are diferents
     result=[]
-    for i in range(26):
-        for j in range(26):
+    for i in range(len(listAux)):
+        for j in range(len(listAux)):
             if listAux[i] != listAux[j]: 
                 result.append(['q1',listAux[i],listAux[j],blank,'q2',listAux[i],listAux[j],blank,static,right,static])
     for x in result:
@@ -43,18 +43,18 @@ def fillT():
 
 #Creating transitions q2 -> q1 with all the alphabet
     result=[]
-    for i in range(26):
+    for i in range(len(listAux)):
         result.append(['q2',listAux[i],',',blank,'q1',listAux[i],',',blank,static,right,static])
         transitions.append(result[i])
 #Creating transitions q2 -> q3 with all the alphabet
     result=[]
-    for i in range(26):
+    for i in range(len(listAux)):
         result.append(['q2',listAux[i],'}',blank,        'q3',listAux[i],'}',blank,right,left,static])
         transitions.append(result[i])
 
 #Creating transitions q3 -> q8 with all alphabet
     result=[]
-    for j in range(26):
+    for j in range(len(listAux)):
         result.append(['q3','}',listAux[j],blank,        'q8','}',listAux[j],blank,right,right,left])
     for x in result:
         transitions.append(x)
@@ -64,14 +64,14 @@ def fillT():
     result=[]
     listComma=listAux.copy()
     listComma.append(',')
-    for j in range(27):
+    for j in range(len(listComma)):
         result.append(['q3',',',listComma[j],blank,        'q3',',',listComma[j],blank,static,left,static])
     for x in result:
         transitions.append(x)
 
 #Creating transitions q1 -> q4 with all alphabet 
     result=[]
-    for j in range(26):
+    for j in range(len(listAux)):
         result.append(['q1','}',listAux[j],blank,        'q4','}',listAux[j],blank,right,left,left])
     for x in result:
         transitions.append(x)
@@ -79,8 +79,8 @@ def fillT():
 
 #Creating transitions q1 -> q5 with all alphabet 
     result=[]
-    for i in range(26):
-        for j in range(26):
+    for i in range(len(listAux)):
+        for j in range(len(listAux)):
             if listAux[i] == listAux[j]: 
                 result.append(['q1',listAux[i],listAux[j],blank,'q5',listAux[i],listAux[j],listAux[i],right,left,right])
     for x in result:
@@ -91,7 +91,7 @@ def fillT():
     result=[]
     listComma=listAux.copy()
     listComma.append(',')
-    for j in range(27):
+    for j in range(len(listComma)):
         result.append(['q5',',',listComma[j],blank,        'q5',',',listComma[j],blank,static,left,static])
     for x in result:
         transitions.append(x)
@@ -101,7 +101,7 @@ def fillT():
     listCor=listAux.copy()
     listCor.append('{')
     listCor.append(',')
-    for j in range(28):
+    for j in range(len(listCor)):
         result.append(['q5','}',listCor[j],blank,        'q7','}',listCor[j],'}',right,static,right])
     for x in result:
         transitions.append(x)
@@ -110,7 +110,7 @@ def fillT():
     result=[]
     listComma=listAux.copy()
     listComma.append('}')
-    for j in range(27):
+    for j in range(len(listComma)):
         result.append(['q1',listComma[j],'}',blank,        'q7',listComma[j],'}','}',static,right,right])
     for x in result:
         transitions.append(x)
@@ -156,10 +156,6 @@ def turing_intersection(inputTape1,inputTape2):
                         head3-=1
                     state=singleT[4]
                     band=True
-                    print(f'Estado: {state}')
-                    print(f'Cabeza 1: {inputTape1[head1]}')
-                    print(f'Cabeza 2: {inputTape2[head2]}')
-                    print(f'Cabeza 3: {outputTape[head3]}')
 
 
             if(band==False):
