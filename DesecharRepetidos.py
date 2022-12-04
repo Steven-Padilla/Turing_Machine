@@ -72,11 +72,19 @@ class DesecharRepetidos():
                 result.append(['q6','!',self.blank,self.blank,        'q6','!',self.blank,self.blank,self.right,self.static,self.static])
                 result.append(['q6',',',self.blank,self.blank,        'q6',',',self.blank,self.blank,self.right,self.static,self.static])
                 result.append(['q6',self.listAux[i],self.blank,self.blank,        'q2','&',self.listAux[i],self.listAux[i],self.right,self.static,self.static])
-                result.append(['q6','}',self.blank,self.blank,        'q5','}','}',self.blank,self.right,self.right,self.right])
-                result.append(['q6','}',',',self.blank,        'q5','}','}',self.blank,self.right,self.right,self.right])
+                result.append(['q6','}',self.blank,self.blank,        'q7','}',self.blank,self.blank,self.right,self.left,self.right])
         for x in result:
             self.transitions.append(x)
 
+        result=[]
+        for i in range(26):
+            result.append(['q7',self.blank,self.listAux[i],self.blank,        'q8',self.blank,self.listAux[i],self.blank,self.static,self.right,self.static])
+            result.append(['q7',self.blank,',',self.blank,        'q5',self.blank,'}',self.blank,self.static,self.right,self.static])
+        for x in result:
+            self.transitions.append(x)
+
+        result=[]
+        result.append(['q8',self.blank,self.blank,self.blank,        'q5',self.blank,'}',self.blank,self.static,self.static,self.static])
 
     def transportStr(self,tape):
         aux =[]
