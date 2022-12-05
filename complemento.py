@@ -11,7 +11,8 @@ class Complemento():
   
         self.transitions=[
         #( Firts block )  --->  (     Second block       )    
-            ['q0','{','{',        'q1','{','{',self.right,self.right],  
+            ['q0','{','{',        'q1','{','{',self.right,self.right],
+            ['q1','}','}',        'q5','}','}',self.static,self.static]  
         ] 
     def fillT(self):
         listAux=list(string.ascii_lowercase) + ["0","1","2","3","4","5","6","7","8","9"]
@@ -111,10 +112,6 @@ class Complemento():
                         head2-=1
                     state=singleT[3]
                     band=True
-                    print(f'state:{state}')
-                    print(f'head1:{inputTape1[head1]}')
-                    print(f'head2:{inputTape2[head2]}')
-
             if(band==False):
                 break
         if state==self.finalState[1] or state==self.finalState[2]:
@@ -129,4 +126,4 @@ class Complemento():
         else:
             return False
 prueba = Complemento()
-print(prueba.ejecutar('{a,e,i,o,u,a,a,u}','{a,e,i,o,u}'))
+print(prueba.ejecutar('{a}','{}'))
